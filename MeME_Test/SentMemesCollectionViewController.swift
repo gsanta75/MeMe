@@ -64,4 +64,13 @@ class SentMemesCollectionViewController: UIViewController, UICollectionViewDataS
         return cell
     }
     
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if let mDvc = segue.destinationViewController as? MeMeDetailViewController{
+            if let indexPath = self.collectionView.indexPathsForSelectedItems()[0] as? NSIndexPath {
+                let meme = memes[indexPath.row]
+                mDvc.memeDetail = meme
+            }
+        }
+    }
+    
 }

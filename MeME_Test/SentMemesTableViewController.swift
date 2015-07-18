@@ -66,5 +66,13 @@ class SentMemesTableViewController: UIViewController, UITableViewDelegate, UITab
 //        self.presentMemeEditorVC()
 //    }
     
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if let mDvc = segue.destinationViewController as? MeMeDetailViewController{
+            if let indexPath = self.tableView.indexPathForSelectedRow() {
+                let meme = memes[indexPath.row]
+                mDvc.memeDetail = meme
+            }
+        }
+    }
 
 }

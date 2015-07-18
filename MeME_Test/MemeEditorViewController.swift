@@ -19,7 +19,7 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     @IBOutlet weak var shareButton: UIBarButtonItem!
     var meme: Meme!
     var yFrameForTextFieldSelected: CGFloat = 0.0
-
+    @IBOutlet weak var navBar: UINavigationBar!
     
     // -------------------------------------
     // MARK: Life Cycle views
@@ -181,7 +181,7 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     func generateMemedImage() -> UIImage {
         
         // Hide toolbar and navbar
-        self.navigationController?.navigationBar.hidden = true
+        self.navBar.hidden = true
         self.toolBar.hidden = true
         
         // Render view to an image
@@ -192,7 +192,7 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         UIGraphicsEndImageContext()
         
         // Show toolbar and navbar
-        self.navigationController?.navigationBar.hidden = false
+        self.navBar.hidden = false
         self.toolBar.hidden = false
         
         return memedImage
