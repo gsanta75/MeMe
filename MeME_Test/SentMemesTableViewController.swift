@@ -23,7 +23,8 @@ class SentMemesTableViewController: UIViewController, UITableViewDelegate, UITab
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.estimatedRowHeight = 120.0
 
     }
     
@@ -32,9 +33,6 @@ class SentMemesTableViewController: UIViewController, UITableViewDelegate, UITab
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         memes = appDelegate.memes
         
-//        if memes.count == 0 {
-//            self.presentMemeEditorVC()
-//        }
         self.tableView.reloadData()
     }
 
@@ -55,16 +53,6 @@ class SentMemesTableViewController: UIViewController, UITableViewDelegate, UITab
         return cell
     }
     
-//    func presentMemeEditorVC(){
-//        let storyboard = UIStoryboard(name: "Main", bundle: NSBundle.mainBundle())
-//        let memeEditorVC = storyboard.instantiateViewControllerWithIdentifier("MemeEditorViewController") as! MemeEditorViewController
-//        self.presentViewController(memeEditorVC, animated: true, completion: nil)
-//
-//    }
-//
-//    @IBAction func addNewMemeImage(sender: AnyObject) {
-//        self.presentMemeEditorVC()
-//    }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if let mDvc = segue.destinationViewController as? MeMeDetailViewController{
@@ -74,5 +62,6 @@ class SentMemesTableViewController: UIViewController, UITableViewDelegate, UITab
             }
         }
     }
+    
 
 }
