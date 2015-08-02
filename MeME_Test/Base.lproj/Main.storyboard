@@ -338,6 +338,7 @@
                     <connections>
                         <outlet property="bottomTextField" destination="3QN-yA-fce" id="gce-Hu-lYr"/>
                         <outlet property="cameraButtonItem" destination="zR1-4U-Dkd" id="2Zj-DK-ilb"/>
+                        <outlet property="cancelButton" destination="Dwv-kM-K3b" id="Fgj-h9-lG2"/>
                         <outlet property="imageView" destination="V3o-dc-wYB" id="z00-ME-37V"/>
                         <outlet property="navBar" destination="Jmj-cp-4Ac" id="KlE-Cx-sfI"/>
                         <outlet property="shareButton" destination="poH-a3-Xr6" id="L8D-0M-4ak"/>
@@ -352,7 +353,7 @@
         <!--Tab Bar Controller-->
         <scene sceneID="6J3-Sg-F1j">
             <objects>
-                <tabBarController id="S6t-X4-nMd" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="tabVC" id="S6t-X4-nMd" sceneMemberID="viewController">
                     <nil key="simulatedBottomBarMetrics"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="EZn-Ca-5NW">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
@@ -412,7 +413,7 @@
         <image name="tableTab" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="hiQ-dv-ZIw"/>
+        <segue reference="oDm-E1-B0h"/>
         <segue reference="cKt-3j-oL1"/>
     </inferredMetricsTieBreakers>
 </document>

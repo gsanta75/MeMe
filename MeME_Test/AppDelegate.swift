@@ -12,12 +12,26 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    //var storyboard: UIStoryboard?
     var memes = [Meme]()
 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
-
+//        if memes.isEmpty {
+//            storyboard = UIStoryboard(name: "Main", bundle: NSBundle.mainBundle())
+//            if let MeMeEditorVC = storyboard!.instantiateViewControllerWithIdentifier("MemeEditorViewController") as? MemeEditorViewController{
+//                if let tabCon = window?.rootViewController as? UITabBarController {
+//                    if let navCon = tabCon.viewControllers?.first as? UINavigationController{
+//                        //navCon.pushViewController(MeMeEditorVC, animated: false)
+//                        navCon.presentViewController(MeMeEditorVC, animated: false, completion: nil)
+//                    }
+//                }
+//
+//                self.window?.rootViewController = MeMeEditorVC
+//            }
+//            
+//        }
         return true
     }
 

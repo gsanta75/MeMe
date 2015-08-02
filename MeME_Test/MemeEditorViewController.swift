@@ -17,9 +17,12 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     @IBOutlet weak var bottomTextField: UITextField!
     @IBOutlet weak var toolBar: UIToolbar!
     @IBOutlet weak var shareButton: UIBarButtonItem!
+    @IBOutlet weak var cancelButton: UIBarButtonItem!
+    
     var meme: Meme!
     var yFrameForTextFieldSelected: CGFloat = 0.0
     @IBOutlet weak var navBar: UINavigationBar!
+    var firstPresent = false
     
     // -------------------------------------
     // MARK: Life Cycle views
@@ -46,8 +49,11 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         self.bottomTextField.defaultTextAttributes = memeTextAttribute
         self.topTextField.textAlignment = NSTextAlignment.Center
         self.bottomTextField.textAlignment = NSTextAlignment.Center
+        
+        
 
     }
+    
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
@@ -56,6 +62,10 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
             self.shareButton.enabled = true
         }else {
             self.shareButton.enabled = false
+        }
+        
+        if firstPresent{
+            cancelButton.enabled = false
         }
         
         self.subscribeToKeyboardNotifications()
@@ -175,7 +185,6 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         appDelegate.memes.append(meme)
         self.dismissViewControllerAnimated(true, completion: nil)
-
     }
     
     func generateMemedImage() -> UIImage {
@@ -216,6 +225,7 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         
     @IBAction func cancel(sender: UIBarButtonItem) {
         self.dismissViewControllerAnimated(true, completion: nil)
+
     }
     
     // -------------------------------------

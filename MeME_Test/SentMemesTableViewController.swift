@@ -23,9 +23,9 @@ class SentMemesTableViewController: UIViewController, UITableViewDelegate, UITab
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 120.0
-
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -35,7 +35,17 @@ class SentMemesTableViewController: UIViewController, UITableViewDelegate, UITab
         
         self.tableView.reloadData()
     }
-
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        if memes.isEmpty{
+            let storyboard = UIStoryboard(name: "Main", bundle: NSBundle.mainBundle())
+            if let MeMeEditorVC = storyboard.instantiateViewControllerWithIdentifier("MemeEditorViewController") as? MemeEditorViewController{
+                MeMeEditorVC.firstPresent = true
+                self.presentViewController(MeMeEditorVC, animated: false, completion: nil)
+            }
+        }
+    }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return memes.count
@@ -62,6 +72,7 @@ class SentMemesTableViewController: UIViewController, UITableViewDelegate, UITab
             }
         }
     }
+    
     
 
 }
