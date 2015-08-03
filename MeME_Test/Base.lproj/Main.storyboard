@@ -72,7 +72,6 @@
                                             <outlet property="imageViewSentCell" destination="bb4-DR-sYQ" id="od2-Ka-vcw"/>
                                             <outlet property="labelSentCell" destination="0Bp-8v-erO" id="kbK-dz-N0I"/>
                                             <outlet property="topLabelSentCell" destination="oUZ-FQ-3oq" id="ZxK-rm-t5N"/>
-                                            <segue destination="vRy-rm-UOA" kind="show" identifier="showMemedImage" id="hiQ-dv-ZIw"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -93,7 +92,7 @@
                     <navigationItem key="navigationItem" id="EFH-0g-zUZ">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="5g8-m2-A0W">
                             <connections>
-                                <segue destination="BYZ-38-t0r" kind="presentation" id="cKt-3j-oL1"/>
+                                <segue destination="BYZ-38-t0r" kind="presentation" id="ozQ-lm-hGF"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -103,7 +102,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DAB-Ph-fSa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-5977" y="-3546"/>
+            <point key="canvasLocation" x="-5885" y="-3546"/>
         </scene>
         <!--Sent Memes Collection View Controller-->
         <scene sceneID="FQN-GA-v0V">
@@ -169,7 +168,6 @@
                                             <outlet property="bottomLabel" destination="RK3-8K-232" id="2yp-zz-Cz8"/>
                                             <outlet property="imageView" destination="rHh-Vp-srm" id="F68-1a-Dj8"/>
                                             <outlet property="topLabel" destination="nZL-7h-xQT" id="WTE-cj-I98"/>
-                                            <segue destination="vRy-rm-UOA" kind="show" identifier="" id="oDm-E1-B0h"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -205,7 +203,7 @@
         <!--Me Me Detail View Controller-->
         <scene sceneID="YnW-Tt-9C6">
             <objects>
-                <viewController id="vRy-rm-UOA" customClass="MeMeDetailViewController" customModule="MeME_Test" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MeMeDetailViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="vRy-rm-UOA" customClass="MeMeDetailViewController" customModule="MeME_Test" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="LNH-d5-ghF"/>
                         <viewControllerLayoutGuide type="bottom" id="yEq-4x-hTX"/>
@@ -226,6 +224,7 @@
                             <constraint firstItem="9ap-aM-i9A" firstAttribute="leading" secondItem="EdD-ct-6gr" secondAttribute="leadingMargin" constant="-16" id="R50-Ng-0Kv"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="bAK-F6-7qe"/>
                     <connections>
                         <outlet property="imageView" destination="9ap-aM-i9A" id="nwl-kZ-PUm"/>
                     </connections>
@@ -311,7 +310,6 @@
                         </subviews>
                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="XoQ-6B-kw6" firstAttribute="top" secondItem="V3o-dc-wYB" secondAttribute="bottom" id="0oN-9N-OfE"/>
                             <constraint firstItem="Xg5-m1-Ocq" firstAttribute="trailing" secondItem="V3o-dc-wYB" secondAttribute="trailing" constant="-16" id="2Vg-Sq-p8a"/>
                             <constraint firstItem="3QN-yA-fce" firstAttribute="leading" secondItem="V3o-dc-wYB" secondAttribute="leading" constant="16" id="4o4-N7-Znd"/>
                             <constraint firstAttribute="trailing" secondItem="V3o-dc-wYB" secondAttribute="trailing" id="7By-bs-vTA"/>
@@ -325,15 +323,10 @@
                             <constraint firstItem="V3o-dc-wYB" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="g53-E4-gjN"/>
                             <constraint firstAttribute="trailing" secondItem="XoQ-6B-kw6" secondAttribute="trailing" id="grX-PX-cRp"/>
                             <constraint firstItem="Jmj-cp-4Ac" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="hOf-z5-gMb"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="XoQ-6B-kw6" secondAttribute="bottom" id="m0C-ox-yUv"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="bottom" secondItem="XoQ-6B-kw6" secondAttribute="bottom" id="m0C-ox-yUv"/>
                             <constraint firstAttribute="trailing" secondItem="Jmj-cp-4Ac" secondAttribute="trailing" id="r6J-Tj-wfM"/>
                             <constraint firstItem="XoQ-6B-kw6" firstAttribute="top" secondItem="V3o-dc-wYB" secondAttribute="bottom" id="udi-0k-n8h"/>
                         </constraints>
-                        <variation key="default">
-                            <mask key="constraints">
-                                <exclude reference="0oN-9N-OfE"/>
-                            </mask>
-                        </variation>
                     </view>
                     <connections>
                         <outlet property="bottomTextField" destination="3QN-yA-fce" id="gce-Hu-lYr"/>
@@ -413,7 +406,6 @@
         <image name="tableTab" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="oDm-E1-B0h"/>
-        <segue reference="cKt-3j-oL1"/>
+        <segue reference="ozQ-lm-hGF"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -19,7 +19,7 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     @IBOutlet weak var shareButton: UIBarButtonItem!
     @IBOutlet weak var cancelButton: UIBarButtonItem!
     
-    var meme: Meme!
+    var meme: Meme?
     var yFrameForTextFieldSelected: CGFloat = 0.0
     @IBOutlet weak var navBar: UINavigationBar!
     var firstPresent = false
@@ -43,15 +43,17 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         //Setup TextFields
         self.topTextField.delegate = self
         self.bottomTextField.delegate = self
-        self.topTextField.text = "TOP"
-        self.bottomTextField.text = "BOTTOM"
+        self.topTextField.text = meme?.topString ?? "TOP"
+        self.bottomTextField.text = meme?.bottomString ?? "BOTTOM"
         self.topTextField.defaultTextAttributes = memeTextAttribute
         self.bottomTextField.defaultTextAttributes = memeTextAttribute
         self.topTextField.textAlignment = NSTextAlignment.Center
         self.bottomTextField.textAlignment = NSTextAlignment.Center
         
+        if let existingMemeImage = meme?.image {
+            self.imageView.image = existingMemeImage
+        }
         
-
     }
     
     
@@ -67,7 +69,6 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         if firstPresent{
             cancelButton.enabled = false
         }
-        
         self.subscribeToKeyboardNotifications()
     }
     
@@ -181,9 +182,11 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     // -------------------------------------
 
     func save(memedImage: UIImage){
-        var meme = Meme(topString: self.topTextField.text, bottomString: self.bottomTextField.text, image: self.imageView.image!, memedImage: memedImage)
+        meme = Meme(topString: self.topTextField.text, bottomString: self.bottomTextField.text, image: self.imageView.image!, memedImage: memedImage)
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-        appDelegate.memes.append(meme)
+        if meme != nil {
+            appDelegate.memes.append(meme!)
+        }
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     

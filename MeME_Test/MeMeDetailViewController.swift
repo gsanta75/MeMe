@@ -12,13 +12,21 @@ class MeMeDetailViewController: UIViewController {
     
     var memeDetail: Meme!
     @IBOutlet weak var imageView: UIImageView!
+    var rightBarButton: UIBarButtonItem!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        
+        rightBarButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Edit, target: self, action: "presentMemeEditorVC:")
+        self.navigationItem.rightBarButtonItem = self.rightBarButton
     }
 
+    func presentMemeEditorVC(sender: UIBarButtonItem){
+        if let memeEditorVC = storyboard?.instantiateViewControllerWithIdentifier("MemeEditorViewController") as? MemeEditorViewController{
+            memeEditorVC.meme = self.memeDetail
+            self.presentViewController(memeEditorVC, animated: true, completion: nil)
+        }
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -26,17 +34,14 @@ class MeMeDetailViewController: UIViewController {
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
+        self.tabBarController?.tabBar.hidden = true
         self.imageView.image = memeDetail.memedImage
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.tabBarController?.tabBar.hidden = false
     }
-    */
+
 
 }

@@ -23,7 +23,6 @@ class SentMemesTableViewController: UIViewController, UITableViewDelegate, UITab
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 120.0
     }
@@ -63,13 +62,11 @@ class SentMemesTableViewController: UIViewController, UITableViewDelegate, UITab
         return cell
     }
     
-    
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if let mDvc = segue.destinationViewController as? MeMeDetailViewController{
-            if let indexPath = self.tableView.indexPathForSelectedRow() {
-                let meme = memes[indexPath.row]
-                mDvc.memeDetail = meme
-            }
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        if let memeDVC = storyboard?.instantiateViewControllerWithIdentifier("MeMeDetailViewController") as? MeMeDetailViewController {
+            let meme = self.memes[indexPath.row]
+            memeDVC.memeDetail = meme
+            self.navigationController?.pushViewController(memeDVC, animated: true)
         }
     }
     
