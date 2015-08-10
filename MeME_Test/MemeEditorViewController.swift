@@ -23,7 +23,7 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     var yFrameForTextFieldSelected: CGFloat = 0.0
     @IBOutlet weak var navBar: UINavigationBar!
     var firstPresent = false
-    
+    var editMode = false
     // -------------------------------------
     // MARK: Life Cycle views
     // -------------------------------------
@@ -187,8 +187,22 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         if meme != nil {
             appDelegate.memes.append(meme!)
         }
-        self.dismissViewControllerAnimated(true, completion: nil)
+        if editMode {
+            self.exitToRootVC()
+        }else {
+            self.dismissViewControllerAnimated(true, completion: nil)
+        }
     }
+    
+    private func exitToRootVC(){
+        let dvc = storyboard?.instantiateInitialViewController() as! UITabBarController
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        
+        UIView.transitionFromView(self.view, toView: dvc.view, duration: 0.5, options: UIViewAnimationOptions.TransitionCrossDissolve) { (finished) -> Void in
+            appDelegate.window?.rootViewController = dvc
+        }
+    }
+
     
     func generateMemedImage() -> UIImage {
         
@@ -211,6 +225,7 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
 
     }
     
+    
     // -------------------------------------
     // MARK: Meme Share
     // -------------------------------------
@@ -227,8 +242,11 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     }
         
     @IBAction func cancel(sender: UIBarButtonItem) {
-        self.dismissViewControllerAnimated(true, completion: nil)
-
+        if editMode {
+            self.exitToRootVC()
+        }else {
+            self.dismissViewControllerAnimated(true, completion: nil)
+        }
     }
     
     // -------------------------------------

@@ -64,6 +64,7 @@ class SentMemesCollectionViewController: UIViewController, UICollectionViewDataS
         return cell
     }
     
+    /*
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         if let memeDVC = storyboard?.instantiateViewControllerWithIdentifier("MeMeDetailViewController") as? MeMeDetailViewController {
             let meme = self.memes[indexPath.row]
@@ -71,6 +72,16 @@ class SentMemesCollectionViewController: UIViewController, UICollectionViewDataS
             self.navigationController?.pushViewController(memeDVC, animated: true)
         }
     }
+    */
     
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "showMeMeDetail" {
+            let indexPath = collectionView.indexPathsForSelectedItems()[0] as! NSIndexPath
+            let meme = memes[indexPath.row]
+            if let mDvc = segue.destinationViewController as? MeMeDetailViewController {
+                mDvc.memeDetail = meme
+            }
+        }
+    }
     
 }

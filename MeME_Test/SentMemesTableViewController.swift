@@ -62,6 +62,19 @@ class SentMemesTableViewController: UIViewController, UITableViewDelegate, UITab
         return cell
     }
     
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "showMeMeDetail" {
+            if let indexPath = tableView.indexPathForSelectedRow() {
+                let meme = memes[indexPath.row]
+                if let mDvc = segue.destinationViewController as? MeMeDetailViewController {
+                    mDvc.memeDetail = meme
+                }
+            }
+            
+        }
+    }
+    
+    /*
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         if let memeDVC = storyboard?.instantiateViewControllerWithIdentifier("MeMeDetailViewController") as? MeMeDetailViewController {
             let meme = self.memes[indexPath.row]
@@ -69,7 +82,7 @@ class SentMemesTableViewController: UIViewController, UITableViewDelegate, UITab
             self.navigationController?.pushViewController(memeDVC, animated: true)
         }
     }
-    
-    
+    */
+
 
 }
